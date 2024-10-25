@@ -1,2 +1,11 @@
+^renv$
+^renv\.lock$
+^doc$
+^Meta$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes/articles$
