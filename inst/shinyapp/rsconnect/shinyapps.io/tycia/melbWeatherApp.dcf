@@ -1,0 +1,10 @@
+name: melbWeatherApp
+title:
+username: tycia
+account: tycia
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13130894
+bundleId: 9268945
+url: https://tycia.shinyapps.io/melbWeatherApp/
+version: 1
