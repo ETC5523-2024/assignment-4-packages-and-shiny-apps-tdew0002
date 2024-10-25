@@ -6,6 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+[pkgdown](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-tdew0002/)
+site.
+
 The melbWeather package provides tools to analyze and visualize
 Melbourne’s weather data, including minimum and maximum temperature
 trends over time. It is designed for students and analysts looking to
