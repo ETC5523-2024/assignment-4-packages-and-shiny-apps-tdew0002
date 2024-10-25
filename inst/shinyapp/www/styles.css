@@ -1,0 +1,52 @@
+.custom-sidebar {
+  background-color: #005b96; /* Navy blue background */
+  color: white;              /* White text */
+  padding: 20px;
+  border-radius: 5px;        /* Rounded corners */
+}
+
+.custom-sidebar .control-label {
+  color: white;              /* Ensure labels are white */
+}
+
+.custom-sidebar span {
+  color: white;              /* Ensure helpText is white */
+}
+
+.custom-sidebar .selectize-input,
+.custom-sidebar .form-control {
+  background-color: #fdf6e3; /* Light off-white background for inputs */
+  color: #333;               /* Dark text for input fields */
+}
+
+.custom-sidebar .btn {
+  background-color: #268bd2; /* Blue buttons */
+  color: white;              /* White text on buttons */
+  border: none;
+}
+
+.custom-sidebar .btn:hover {
+  background-color: #005b96; /* Darker blue on hover */
+}
+
+.custom-box {
+  background-color: #fdf6e3; /* Light off-white background to match the theme */
+  border: 2px solid #ddd;   /* Light gray border for the box */
+  padding: 15px;            /* Padding inside the box for spacing */
+  margin-bottom: 20px;      /* Space between boxes */
+  border-radius: 8px;       /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+}
+
+.custom-box h4 {
+  margin-top: 0;            /* Remove top margin to align header with the box */
+  color: #005b96;           /* Navy blue color for headers */
+}
+
+.custom-box p {
+  color: #333;              /* Dark gray text for paragraph content */
+}
+
+
+
+

@@ -1,0 +1,17 @@
+Package: melbWeather
+Title: Analysis of Melbourne Temperature Data with Shiny App
+Version: 0.1.0
+Authors@R: 
+    person("Tycia", "Dewi", , "tdew0002@student.monash.edu", role = c("aut", "cre"))
+Description: An R package for analyzing and visualizing Melbourne temperature data from 2022 to 2024.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

@@ -1,0 +1,53 @@
+---
+title: "melbWeather-introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{melbWeather-introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+The `melbWeather` package provides tools to analyze and visualize Melbourne's weather data, including minimum and maximum temperature trends. This vignette will guide you through the basic usage of the package.
+
+## Installation
+
+Install the development version of the package from GitHub:
+
+```{r}
+# install.packages("remotes")
+remotes::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-tdew0002")
+```
+
+## Loading the Package 
+
+```{r setup}
+library(melbWeather)
+```
+
+## Cleaning Data
+Use the clean_weather_data function to clean raw weather data files:
+```{r}
+# Example file paths (adjust these paths to your own data)
+min_temp_path <- "data-raw/melbourne_weather_min.csv"
+max_temp_path <- "data-raw/melbourne_weather_max.csv"
+
+# Clean the data
+cleaned_data <- clean_weather_data(min_temp_path, max_temp_path)
+head(cleaned_data)
+```
+
+## Launching the Shiny App
+This Shiny app allows users to filter Melbourne temperature data by date range and temperature type, providing an interactive way to visualize trends.
+Launch the interactive Shiny app to explore weather trends:
+```{r}
+startApp()
+```
