@@ -36,6 +36,7 @@
 <li class="nav-item"><a class="nav-link" href="articles/index.html">Vignettes</a></li>
       </ul>
 <ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://tycia.shinyapps.io/melbWeatherApp/">Shiny App</a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-tdew0002">GitHub</a></li>
       </ul>
 </div>
@@ -60,41 +61,54 @@
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ETC5523-2024/assignment-4-packages-and-shiny-apps-tdew0002"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="vignettes">Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"></a>
+<h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<p>For a detailed tutorial and examples on how to use melbWeather, check out the vignette:</p>
+<p>Load the package with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># View the vignette after installing the package</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"melbWeather-introduction"</span><span class="op">)</span></span></code></pre></div>
-<p>The vignette provides step-by-step instructions on how to clean weather data, use the interactive Shiny app, and perform analyses with the melbWeather package.</p>
-</div>
-<div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
-</h2>
-<p>This is a basic example that demonstrates how to use the melbWeather package to load data and launch the interactive Shiny app:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ETC5523-2024.github.io/assignment-4-packages-and-shiny-apps-tdew0002">melbWeather</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="cleaning-raw-weather-data">Cleaning Raw Weather Data<a class="anchor" aria-label="anchor" href="#cleaning-raw-weather-data"></a>
+</h3>
+<p>The clean_weather_data() function is created and used to clean raw weather data files before performing analysis. Here’s an example of how to use it:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ETC5523-2024.github.io/assignment-4-packages-and-shiny-apps-tdew0002">melbWeather</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Assuming you have raw CSV files for minimum and maximum temperatures</span></span>
+<span><span class="va">min_temp_path</span> <span class="op">&lt;-</span> <span class="st">"data-raw/melbourne_weather_min.csv"</span></span>
+<span><span class="va">max_temp_path</span> <span class="op">&lt;-</span> <span class="st">"data-raw/melbourne_weather_max.csv"</span></span>
 <span></span>
-<span><span class="co"># Load Melbourne weather data</span></span>
+<span><span class="co"># Clean the data using the clean_weather_data function</span></span>
+<span><span class="va">weather_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/clean_weather_data.html">clean_weather_data</a></span><span class="op">(</span><span class="va">min_temp_path</span>, <span class="va">max_temp_path</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View the first few rows of the cleaned data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weather_data</span><span class="op">)</span></span></code></pre></div>
+<p>The clean_weather_data() function combines the data from both files, standardises column names, and formats dates for further analysis.</p>
+</div>
+<div class="section level3">
+<h3 id="weather-data">Weather data<a class="anchor" aria-label="anchor" href="#weather-data"></a>
+</h3>
+<p>User does not need to use the clean_weather_data() function, instead the dataset created by clean_weather_data() function in this package can be directly access by using weather_data, which contains daily weather records for Melbourne, including minimum and maximum temperatures.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load Melbourne weather data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"weather_data"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Display the first few rows of the data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weather_data</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weather_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   year month day minimum_temperature_degree_c maximum_temperature_degree_c</span></span>
+<span><span class="co">#&gt; 1 2013    01  01                           NA                           NA</span></span>
+<span><span class="co">#&gt; 2 2013    01  02                           NA                           NA</span></span>
+<span><span class="co">#&gt; 3 2013    01  03                           NA                           NA</span></span>
+<span><span class="co">#&gt; 4 2013    01  04                           NA                           NA</span></span>
+<span><span class="co">#&gt; 5 2013    01  05                           NA                           NA</span></span>
+<span><span class="co">#&gt; 6 2013    01  06                           NA                           NA</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="launch-the-shiny-app">Launch the Shiny App<a class="anchor" aria-label="anchor" href="#launch-the-shiny-app"></a>
-</h2>
-<p>To explore Melbourne’s weather data interactively, you can launch the Shiny app included in the package:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Launch the Shiny app</span></span>
-<span><span class="fu"><a href="reference/startApp.html">startApp</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-analysis">Example Analysis<a class="anchor" aria-label="anchor" href="#example-analysis"></a>
 </h2>
 <p>Here is an example of summarising a basic dataset:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">weather_data</span><span class="op">$</span><span class="va">minimum_temperature_degree_c</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">weather_data</span><span class="op">$</span><span class="va">minimum_temperature_degree_c</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
+<span><span class="co">#&gt;    0.60    8.60   11.30   11.57   14.50   28.00     152</span></span></code></pre></div>
 <p>You can also embed plots, for example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -106,37 +120,68 @@
 <span>    y <span class="op">=</span> <span class="st">"Temperature (°C)"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
+</div>
+<div class="section level2">
+<h2 id="launch-the-shiny-app">Launch the Shiny App<a class="anchor" aria-label="anchor" href="#launch-the-shiny-app"></a>
+</h2>
+<p>The <code>melbWeather</code> package includes an interactive Shiny app for exploring weather data. You can access the app directly online:</p>
+<p><a href="https://tycia.shinyapps.io/melbWeatherApp/" class="external-link">Launch the Interactive Shiny App</a></p>
+<p>To run the app locally, use the following command:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Launch the Shiny app</span></span>
+<span><span class="fu"><a href="reference/startApp.html">startApp</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="vignettes">Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"></a>
+</h2>
+<p>For a detailed tutorial and examples on how to use melbWeather, check out the vignette:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># View the vignette after installing the package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"melbWeather-introduction"</span><span class="op">)</span></span></code></pre></div>
+<p>The vignette provides step-by-step instructions on how to clean weather data, use the interactive Shiny app, and perform analyses with the melbWeather package.</p>
+<p>Or read it online at the <a href="https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-tdew0002/" class="external-link">pkgdown</a> site.</p>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h2>
 <p>This package is licensed under the MIT License. See the LICENSE file for more information.</p>
+</div>
+<div class="section level2">
+<h2 id="aknowledgement">Aknowledgement<a class="anchor" aria-label="anchor" href="#aknowledgement"></a>
+</h2>
+<p>Data for this package is sourced from the <a href="http://www.bom.gov.au/" class="external-link">Australian Bureau of Meteorology</a>.</p>
 <div class="section level3">
-<h3 id="explanation-of-the-key-sections">Explanation of the Key Sections<a class="anchor" aria-label="anchor" href="#explanation-of-the-key-sections"></a>
+<h3 id="key-sections-of-the-readmermd">Key Sections of the <code>README.Rmd</code>
+<a class="anchor" aria-label="anchor" href="#key-sections-of-the-readmermd"></a>
 </h3>
-<ul>
+<ol style="list-style-type: decimal">
 <li>
-<strong>Installation</strong>: Provides instructions for installing the package using <code>pak</code>, which simplifies the installation of development versions from GitHub.</li>
+<strong>Package Introduction</strong>: Provides a brief overview of what the <code>melbWeather</code> package does.</li>
 <li>
-<strong>Vignette Section</strong>: Added a new section titled <em>Vignettes</em> with instructions on how to access the vignette:</li>
+<strong>Installation</strong>: Includes instructions for installing the package using <code>remotes</code>.</li>
+<li>
+<strong>Getting Started</strong>: Shows how to load the package and access the main dataset.</li>
+<li>
+<strong>Example Analysis</strong>: Demonstrates a simple plotting example using <code>ggplot2</code> and the <code>weather_data</code> dataset.</li>
+<li>
+<strong>Shiny App</strong>: Explains how to launch the Shiny app locally and provides a link to the online version hosted on <code>shinyapps.io</code>.</li>
+<li>
+<strong>Documentation and Vignettes</strong>: Directs users to the <code>pkgdown</code> site for full documentation and tutorials.</li>
+<li>
+<strong>License and Acknowledgements</strong>: Mentions the license and credits the data source.</li>
+</ol>
+</div>
+</div>
+</div>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://tycia.shinyapps.io/melbWeatherApp/" class="external-link">Launch the Interactive Shiny App</a></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"melbWeather-introduction"</span><span class="op">)</span></span></code></pre></div>
-<ul>
-<li>
-<strong>Usage</strong>: Shows how to load the package, access the data, and use the core function (<code><a href="reference/startApp.html">startApp()</a></code>).</li>
-<li>
-<strong>Launch the Shiny App</strong>: Mentions how to use the interactive Shiny app, encouraging users to explore the data visually.</li>
-<li>
-<strong>Example Analysis</strong>: Includes examples that showcase the dataset and plots, giving users a clear idea of what they can achieve with the package.</li>
-<li>
-<strong>License</strong>: Standard sections that encourage contributions and clarify the package’s license.</li>
-</ul>
 </div>
-</div>
-</div>
-  </main><aside class="col-md-3"><div class="license">
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>

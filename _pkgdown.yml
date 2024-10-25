@@ -1,0 +1,25 @@
+template:
+  bootstrap: 5
+
+navbar:
+  left:
+    - text: "Get Started"
+      href: articles/melbWeather-introduction.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Vignettes"
+      href: articles/index.html
+  right:
+    - text: "Shiny App"
+      href: "https://tycia.shinyapps.io/melbWeatherApp/"
+    - text: "GitHub"
+      href: "https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-tdew0002"
+
+home:
+  title: "melbWeather"
+  description: "An R package for analyzing and visualizing Melbourne's weather data, including an interactive Shiny app."
+  links:
+    - text: "Launch the Interactive Shiny App"
+      href: "https://tycia.shinyapps.io/melbWeatherApp/"
+
+url: https://ETC5523-2024.github.io/assignment-4-packages-and-shiny-apps-tdew0002

@@ -1,9 +1,18 @@
+if (!requireNamespace("melbWeather", quietly = TRUE)) {
+  remotes::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-tdew0002")
+}
+
 library(shiny)
 library(ggplot2)
 library(melbWeather)
 library(rlang)
 library(bslib)
 library(dplyr)
+library(remotes)
+
+
+
+
 
 
 data("weather_data")

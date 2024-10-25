@@ -1,0 +1,15 @@
+---
+title: "Interactive Shiny App"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Interactive Shiny App}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Interactive Shiny App
+
+Experience the features of the `melbWeather` package through our interactive Shiny app below.
+
+<iframe src="https://tycia.shinyapps.io/melbWeatherApp/" width="100%" height="800px"></iframe>
